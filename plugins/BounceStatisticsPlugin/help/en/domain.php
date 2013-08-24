@@ -1,0 +1,1 @@
+<p>This tab lists the domains of email addresses that have bounced. The domain is is the part of the email address after the '@' character.</p><table><tr><td>Domain name</td><td>The domain name.</td></tr><tr><td>Total bounces</td><td>The number of messages to email addresses within the domain that have bounced.</td></tr></table>
