@@ -105,6 +105,7 @@ $reasons = array(
         'envelope blocked',
         'High probability of spam',
         'incoming email as possible spam',
+        'in a black list at web.dnsbl.sorbs.net',
         'IP is DNSBL listed',
         'is currently blacklisted',
         'is restricted',
