@@ -16,11 +16,16 @@
  */
 
 $reasons = array(
-    'Unrouteable address' => array('Unrouteable address'),
+    'Unrouteable address' => array(
+        'Unrouteable%address',
+        'Unroutable%address',
+        'No route to host'
+    ),
     'Unknown user' => array(
         'bad address',
         'Check the address',
         'Delivery to the following recipients failed',
+        'disabled or discontinued',
         'does not exist',
         'e-mail address was not found',
         'e-mail address you entered couldn\'t be found',
@@ -67,11 +72,17 @@ $reasons = array(
     'Blocked by Verizon' => array(
         'currently blocked by Verizon'
     ),
+    'Blocked by Comcast' => array(
+        'Comcast%spam'
+    ),
     'Blocked by AOL' => array(
         'postmaster.info.aol.com/errors'
     ),
     'Blocked by RoadRunner' => array(
         'postmaster.rr.com/amIBlockedByRR'
+    ),
+    'Blocked by messagelabs' => array(
+        'visit www.messagelabs.com/support'
     ),
     'Rejected by Yahoo Groups' => array(
         'help.yahoo.com/l/us/yahoo/groups'
@@ -128,6 +139,7 @@ $reasons = array(
         'rejected for policy reasons',
         'Requested action not taken: message refused',
         'Rule imposed mailbox access',
+        'sending MTA\'s poor reputation',
         'spamhaus',
         'Spamhaus',
         'Sending address not accepted due to spam filter',
@@ -137,6 +149,7 @@ $reasons = array(
         'Spam source blocked',
         'Spamming not allowed',
         'SPF unauthorized mail is prohibited',
+        'wasn\'t delivered because of security policies',
         'www.barracudanetworks.com'
     ),
     'Unsolicited' => array(
@@ -145,8 +158,11 @@ $reasons = array(
     ),
     'retry time not reached for any host after a long failure period' => array('retry time not reached for any host after a long failure period'),
     'Address rejected' => array('Address rejected'),
-    'malformed address' => array('malformed address'),
-    'retry timeout exceeded' => array('retry timeout exceeded'),
+    'Malformed address' => array('malformed address'),
+    'Connection timeout' => array(
+        'retry timeout exceeded',
+        'Connection%timed out'
+    ),
     'mailbox name not allowed' => array('mailbox name not allowed'),
     'transaction failed' => array('554 transaction failed'),
     'Relaying not allowed' => array(
@@ -181,6 +197,7 @@ $reasons = array(
         'Delivery to the following recipients failed',
         'this message has been in the queue too long'
     ),
+    'Connection refused' => array('Connection refused'),
     '550 code' => array('550')
 );
 
