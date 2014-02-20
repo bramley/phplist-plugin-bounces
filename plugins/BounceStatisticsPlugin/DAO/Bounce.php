@@ -68,7 +68,13 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
             JOIN {$this->tables['message']} AS m ON m.id = umb.message
             ORDER BY umb.bounce
             $limitClause";
-        $bounces = implode(', ', $this->dbCommand->queryColumn($sql, 'bounce'));
+
+        $bounces = $this->dbCommand->queryColumn($sql, 'bounce');
+
+        if (count($bounces) == 0) {
+            return array();
+        }
+        $bounces = implode(', ', $bounces);
 
         list($attr_join, $attr_fields) = $this->userAttributeJoin($attributes);
         $sql = 
