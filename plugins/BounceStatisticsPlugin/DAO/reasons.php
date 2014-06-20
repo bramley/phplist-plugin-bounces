@@ -22,6 +22,7 @@ $reasons = array(
         'No route to host'
     ),
     'Unknown user' => array(
+        'account has been suspended',
         'bad address',
         'Check the address',
         'Delivery to the following recipients failed',
@@ -88,10 +89,11 @@ $reasons = array(
         'help.yahoo.com/l/us/yahoo/groups'
     ),
     'Rejected by recipient' => array(
+        'does not accept mail from',
         'recipient is only accepting mail from specific email addresses',
         'www.sendio.com/authentication-about'
     ),
-    'Blocked by spam filter or SPF' => array(
+    'Blocked by blacklist, spam filter or SPF' => array(
         'Access denied',
         'Administrative prohibition',
         'as possible spam',
@@ -118,6 +120,7 @@ $reasons = array(
         'incoming email as possible spam',
         'in a black list at web.dnsbl.sorbs.net',
         'IP is DNSBL listed',
+        'is blacklisted',
         'is currently blacklisted',
         'is restricted',
         'like spam or phish to me',
@@ -144,6 +147,7 @@ $reasons = array(
         'Spamhaus',
         'Sending address not accepted due to spam filter',
         '5.0.0 Spam',
+        'Spam content matched',
         'Spam mail rejected',
         'Spam Message',
         'Spam source blocked',
@@ -185,6 +189,7 @@ $reasons = array(
         'does not have%enough disk space',
         'exceeded storage allocation',
         'exceeds allowed size',
+        'full mailbox',
         'mailbox is full',
         'mailfolder is full',
         'over quota',
@@ -195,7 +200,8 @@ $reasons = array(
     'Delivery delayed' => array('Delivery to the following recipients has been delayed'),
     'Delivery failed' => array(
         'Delivery to the following recipients failed',
-        'this message has been in the queue too long'
+        'this message has been in the queue too long',
+        'Hop count exceeded'
     ),
     'Connection refused' => array('Connection refused'),
     '550 code' => array('550')
