@@ -190,6 +190,7 @@ $reasons = array(
         'exceeded storage allocation',
         'exceeds allowed size',
         'full mailbox',
+        'Mailbox full',
         'mailbox is full',
         'mailfolder is full',
         'over quota',
