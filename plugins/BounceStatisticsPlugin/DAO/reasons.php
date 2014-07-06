@@ -23,6 +23,7 @@ $reasons = array(
     ),
     'Unknown user' => array(
         'account has been suspended',
+        'Account not available',
         'bad address',
         'Check the address',
         'Delivery to the following recipients failed',
