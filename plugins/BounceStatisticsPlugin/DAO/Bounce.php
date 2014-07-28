@@ -78,7 +78,7 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
 
         list($attr_join, $attr_fields) = $this->userAttributeJoin($attributes);
         $sql = 
-           "SELECT u.email, u.id, umb.message, umb.bounce,
+           "SELECT u.email, u.id, umb.message, umb.bounce, umb.time AS bouncedate,
             $this->case
             $attr_fields
             FROM {$this->tables['user_message_bounce']} AS umb

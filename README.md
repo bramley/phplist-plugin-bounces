@@ -49,5 +49,6 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version     Description
+    2014-07-13  Added bounce date
     2013-08-24  Added to GitHub
     2013-05-10  Initial version for phplist 2.11.9 converted from 2.10 version

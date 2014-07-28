@@ -34,13 +34,14 @@ class BounceStatisticsPlugin_Controller_Reason
                 $key, $this->i18n->get('User email'), $row['email'],
                 new CommonPlugin_PageURL('user', array('id' => $row['id']))
             );
+            $w->addColumn($key, $this->i18n->get('message id'), $row['message'],
+                new CommonPlugin_PageURL('message', array('id' => $row['message']))
+            );
+            $w->addColumn($key, $this->i18n->get('Date'), $row['bouncedate']);
 
             foreach ($this->model->selectedAttrs as $attr) {
                 $w->addColumn($key, $this->model->attributes[$attr]['name'], $row["attr{$attr}"]);
             }
-            $w->addColumn($key, $this->i18n->get('message id'), $row['message'],
-                new CommonPlugin_PageURL('message', array('id' => $row['message']))
-            );
             $w->addColumn($key, $this->i18n->get('reason'), $row['reason']);
         }
     }
@@ -63,11 +64,12 @@ class BounceStatisticsPlugin_Controller_Reason
             $this->i18n->get('bounce'),
             $this->i18n->get('User email')
         );
+        $fields[] = $this->i18n->get('message id');
+        $fields[] = $this->i18n->get('bounce date');
 
         foreach ($this->model->selectedAttrs as $attr)
             $fields[] = $this->model->attributes[$attr]['name'];
 
-        $fields[] = $this->i18n->get('message id');
         $fields[] = $this->i18n->get('reason');
         return $fields;
     }
@@ -78,10 +80,11 @@ class BounceStatisticsPlugin_Controller_Reason
             $row['bounce'],
             $row['email']
         );
+        $values[] = $row['message'];
+        $values[] = $row['bouncedate'];
 
         foreach ($this->model->selectedAttrs as $attr)
             $values[] = $row["attr{$attr}"];
-        $values[] = $row['message'];
         $values[] = $row['reason'];
         return $values;
     }

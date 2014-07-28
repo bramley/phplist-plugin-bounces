@@ -1,3 +1,6 @@
+version 2014-07-13
+      Include the date phplist processed the bounce
+
 version 2013-08-24
       Initial release for GitHub
       Added bounce reason
