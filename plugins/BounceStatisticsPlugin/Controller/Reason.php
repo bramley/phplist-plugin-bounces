@@ -37,7 +37,7 @@ class BounceStatisticsPlugin_Controller_Reason
             $w->addColumn($key, $this->i18n->get('message id'), $row['message'],
                 new CommonPlugin_PageURL('message', array('id' => $row['message']))
             );
-            $w->addColumn($key, $this->i18n->get('Date'), $row['bouncedate']);
+            $w->addColumn($key, $this->i18n->get('Bounce date'), $row['bouncedate']);
 
             foreach ($this->model->selectedAttrs as $attr) {
                 $w->addColumn($key, $this->model->attributes[$attr]['name'], $row["attr{$attr}"]);
