@@ -80,6 +80,9 @@ $reasons = array(
     'Blocked by AOL' => array(
         'postmaster.info.aol.com/errors'
     ),
+    'Blocked by gmail' => array(
+        'http://support.google.com/mail/bin/answer.py'
+    ),
     'Blocked by RoadRunner' => array(
         'postmaster.rr.com/amIBlockedByRR'
     ),
@@ -96,6 +99,7 @@ $reasons = array(
     ),
     'Blocked by blacklist, spam filter or SPF' => array(
         'Access denied',
+        'att.net/blocks',
         'Administrative prohibition',
         'as possible spam',
         'b.barracudacentral.org',
@@ -112,6 +116,7 @@ $reasons = array(
         'Connection blocked',
         'Connection not authorized',
         'Connection refused due to abuse',
+        'content judged to be spam',
         'Currently Sending Spam',
         'dnsbl-lookup.cgi',
         'Domain/IP address is blocked by the reputation server',
@@ -146,6 +151,8 @@ $reasons = array(
         'Requested action not taken: message refused',
         'Rule imposed mailbox access',
         'sending MTA\'s poor reputation',
+        'www.spamcop.net',
+        'spam.cybernet1.com',
         'spamhaus',
         'Spamhaus',
         'Sending address not accepted due to spam filter',
@@ -156,6 +163,8 @@ $reasons = array(
         'Spam source blocked',
         'Spamming not allowed',
         'SPF unauthorized mail is prohibited',
+        'Too much spam',
+        'the Internet community may consider spam',
         'wasn\'t delivered because of security policies',
         'www.barracudanetworks.com'
     ),
@@ -200,12 +209,14 @@ $reasons = array(
         'over quota',
         'over the allowed quota',
         'quota exceeded',
-        'Quota exceeded'
+        'Quota exceeded',
+        'User exceeds storage quota'
     ),
     'Delivery delayed' => array('Delivery to the following recipients has been delayed'),
     'Delivery failed' => array(
         'Delivery to the following recipients failed',
         'this message has been in the queue too long',
+        'Too many hops',
         'Hop count exceeded'
     ),
     'Connection refused' => array('Connection refused'),
