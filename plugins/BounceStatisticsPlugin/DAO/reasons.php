@@ -210,6 +210,7 @@ $reasons = array(
         'over the allowed quota',
         'quota exceeded',
         'Quota exceeded',
+        'Recipient overquota',
         'User exceeds storage quota'
     ),
     'Delivery delayed' => array('Delivery to the following recipients has been delayed'),
