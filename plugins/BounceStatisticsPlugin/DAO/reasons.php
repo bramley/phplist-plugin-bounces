@@ -166,6 +166,8 @@ $reasons = array(
         'Too much spam',
         'the Internet community may consider spam',
         'wasn\'t delivered because of security policies',
+        'www.openspf.org',
+        'blocked by SPF',
         'www.barracudanetworks.com'
     ),
     'Unsolicited' => array(
@@ -198,6 +200,9 @@ $reasons = array(
         'Domain name %does not resolve'
     ),
     'Mailbox full' => array(
+        'maximum mailbox size reached',
+        'Mailbox has exceeded the limit',
+        'Not enough disk space',
         'does not have%enough disk space',
         'exceeded storage allocation',
         'exceeds allowed size',
@@ -213,7 +218,10 @@ $reasons = array(
         'Recipient overquota',
         'User exceeds storage quota'
     ),
-    'Delivery delayed' => array('Delivery to the following recipients has been delayed'),
+    'Delivery delayed' => array(
+        'Delivery to the following recipients has been delayed',
+        'It will be retried until it is'
+    ),
     'Delivery failed' => array(
         'Delivery to the following recipients failed',
         'this message has been in the queue too long',
