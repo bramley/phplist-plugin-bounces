@@ -1,3 +1,6 @@
+version 2015-03-23
+      Change to autoload approach
+
 version 2014-07-13
       Include the date phplist processed the bounce
 
