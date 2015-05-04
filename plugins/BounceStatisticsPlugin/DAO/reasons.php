@@ -177,10 +177,6 @@ $reasons = array(
     'retry time not reached for any host after a long failure period' => array('retry time not reached for any host after a long failure period'),
     'Address rejected' => array('Address rejected'),
     'Malformed address' => array('malformed address'),
-    'Connection timeout' => array(
-        'retry timeout exceeded',
-        'Connection%timed out'
-    ),
     'mailbox name not allowed' => array('mailbox name not allowed'),
     'transaction failed' => array('554 transaction failed'),
     'Relaying not allowed' => array(
@@ -229,6 +225,10 @@ $reasons = array(
         'Hop count exceeded'
     ),
     'Connection refused' => array('Connection refused'),
-    '550 code' => array('550')
+    '550 code' => array('550'),
+    'Connection timeout' => array(
+        'retry timeout exceeded',
+        'Connection%timed out'
+    ),
 );
 
