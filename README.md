@@ -49,6 +49,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version     Description
+    2015-05-30  Improved German translation
     2015-03-23  Change to autoload approach
     2014-07-13  Added bounce date
     2013-08-24  Added to GitHub
