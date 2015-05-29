@@ -1,3 +1,8 @@
+version 2015-05-30
+MarcelvC (2):
+      added German language file; added one item to English language array
+      modified German language file to reflect change in language array; adjusted translation to match wording of main application
+
 version 2015-03-23
       Change to autoload approach
 
