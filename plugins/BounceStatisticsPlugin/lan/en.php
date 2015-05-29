@@ -27,6 +27,7 @@ $lan = array(
     'message id' => 'Msg ID',
     'domain name' => 'Domain name',
     'bounces' => 'Total bounces',
+	'bounce count' => 'Bounce count',
     'confirmed_heading' => 'Conf',
     'not confirmed' => 'not confirmed',
     'blacklisted_heading' => 'Bl',
