@@ -31,11 +31,7 @@ class BounceStatisticsPlugin extends phplistPlugin
         'domain' => array('category' => 'statistics'),
         'users' => array('category' => 'statistics')
     );
-    public $pageTitles = array(
-        'reason' => 'Bounce Reasons',
-        'domain' => 'Bounce Domains',
-        'users' => 'Bounced Users',
-    );
+    public $pageTitles;
 
     public function adminmenu()
     {
@@ -49,5 +45,19 @@ class BounceStatisticsPlugin extends phplistPlugin
             ? file_get_contents($f)
             : '';
         parent::__construct();
+    }
+
+    public function sendFormats()
+    {
+        global $plugins;
+
+        require_once $plugins['CommonPlugin']->coderoot . 'Autoloader.php';
+        $i18n = new CommonPlugin_I18N($this);
+        $this->pageTitles = array(
+            'reason' => $i18n->get('Bounce Reasons'),
+            'domain' => $i18n->get('Bounce Domains'),
+            'users' => $i18n->get('Bounced Users'),
+        );
+        return null;
     }
 }
