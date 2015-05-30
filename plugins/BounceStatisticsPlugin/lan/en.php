@@ -23,6 +23,7 @@ $lan = array(
     'bounced users' => 'Bounced users',
     'bounce' => 'Bounce ID',
     'bounce date' => 'Bounce Date',
+	'reason' => 'reason',
     'User email' => 'User email',
     'message id' => 'Msg ID',
     'domain name' => 'Domain name',
