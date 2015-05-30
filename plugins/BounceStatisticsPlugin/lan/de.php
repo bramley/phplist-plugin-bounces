@@ -23,6 +23,7 @@ $lan = array(
     'bounced users' => 'Abonnenten mit Retouren',
     'bounce' => 'ID Retoure',
     'bounce date' => 'Datum Retoure',
+	'reason' => 'Grund',
     'User email' => 'E-Mail-Adresse',
     'message id' => 'ID Nach-<br />richt',
     'domain name' => 'Domain Name',
