@@ -47,6 +47,25 @@ class BounceStatisticsPlugin extends phplistPlugin
         parent::__construct();
     }
 
+    /**
+     * Provide the dependencies for enabling this plugin
+     *
+     * @access  public
+     * @return  array
+     */
+    public function dependencyCheck()
+    {
+        global $plugins;
+
+        return array(
+            'Common plugin v3 installed' =>
+                phpListPlugin::isEnabled('CommonPlugin')
+                    && preg_match('/\d+\.\d+\.\d+/', $plugins['CommonPlugin']->version, $matches)
+                    && version_compare($matches[0], '3') > 0,
+            'PHP version 5.3.0 or greater' => version_compare(PHP_VERSION, '5.3') > 0,
+        );
+    }
+
     public function sendFormats()
     {
         global $plugins;
