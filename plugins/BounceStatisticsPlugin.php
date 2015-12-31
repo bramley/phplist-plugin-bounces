@@ -26,6 +26,7 @@ class BounceStatisticsPlugin extends phplistPlugin
     public $enabled = true;
     public $authors = 'Duncan Cameron';
     public $description = 'Provides statistics on bounces.';
+    public $documentationUrl = 'https://resources.phplist.com/plugin/bouncestatistics';
     public $topMenuLinks = array(
         'reason' => array('category' => 'statistics'),
         'domain' => array('category' => 'statistics'),
@@ -41,10 +42,10 @@ class BounceStatisticsPlugin extends phplistPlugin
     public function __construct()
     {
         $this->coderoot = dirname(__FILE__) . '/BounceStatisticsPlugin/';
+        parent::__construct();
         $this->version = (is_file($f = $this->coderoot . self::VERSION_FILE))
             ? file_get_contents($f)
             : '';
-        parent::__construct();
     }
 
     /**

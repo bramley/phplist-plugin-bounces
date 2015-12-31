@@ -49,6 +49,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version     Description
+    2.0.1+20151231  Further bounce reasons
     2.0.0+20150815  Added dependencies
     2015-05-30      Improved German translation
     2015-03-23      Change to autoload approach

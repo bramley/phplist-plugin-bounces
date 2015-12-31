@@ -56,7 +56,8 @@ $reasons = array(
         'unknown or illegal alias',
         'Unknown user',
         'User unknown',
-        'RESOLVER.ADR.RecipNotFound; not found'
+        'RESOLVER.ADR.RecipNotFound; not found',
+        'No mail box available for this user',
     ),
     'Reverse DNS lookup failed' => array(
         'do not have reverse-DNS',
@@ -168,7 +169,8 @@ $reasons = array(
         'wasn\'t delivered because of security policies',
         'www.openspf.org',
         'blocked by SPF',
-        'www.barracudanetworks.com'
+        'www.barracudanetworks.com',
+        'add you to the accept list for',
     ),
     'Unsolicited' => array(
         'appears to be unsolicited',
@@ -212,7 +214,8 @@ $reasons = array(
         'quota exceeded',
         'Quota exceeded',
         'Recipient overquota',
-        'User exceeds storage quota'
+        'User exceeds storage quota',
+        'larger than the space available',
     ),
     'Delivery delayed' => array(
         'Delivery to the following recipients has been delayed',
@@ -222,13 +225,18 @@ $reasons = array(
         'Delivery to the following recipients failed',
         'this message has been in the queue too long',
         'Too many hops',
-        'Hop count exceeded'
+        'Hop count exceeded',
+        'X-Notes; Delivery time expired',
+    ),
+    'Address no longer used' => array(
+        'old addresses are no longer used',
+        'Address no longer%in use',
     ),
     'Connection refused' => array('Connection refused'),
-    '550 code' => array('550'),
     'Connection timeout' => array(
         'retry timeout exceeded',
         'Connection%timed out'
     ),
+    '550 code' => array('550'),
 );
 
