@@ -1,3 +1,6 @@
+version 2.0.2+20160321
+      Added bounce reasons
+
 version 2.0.1+20151231
       Further bounce reasons
       Added documentation url

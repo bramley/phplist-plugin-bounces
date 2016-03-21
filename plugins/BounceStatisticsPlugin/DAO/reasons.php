@@ -36,6 +36,7 @@ $reasons = array(
         'Invalid mailbox',
         'invalid recipient',
         'mailbox not available',
+        'mailbox not found',
         'mailbox unavailable',
         'Mailbox unknown or not accepting mail.',
         'no mailbox here by that name',
@@ -46,7 +47,10 @@ $reasons = array(
         'not listed',
         'Not our Customer',
         'Recipient address rejected',
+        'Recipient address unknown',
+        'Recipient not found',
         'recipients in your email are invalid',
+        'Recipient Undeliverable',
         'The email account that you tried to reach is disabled',
         'Reject No user',
         'This account has been disabled or discontinued',
@@ -55,9 +59,14 @@ $reasons = array(
         'Unable to process recipient',
         'unknown or illegal alias',
         'Unknown user',
+        'unknown mailbox',
         'User unknown',
+        'user%unknown',
         'RESOLVER.ADR.RecipNotFound; not found',
         'No mail box available for this user',
+        'The address may be misspelled or may not exist',
+        'E-mail address is not handled by this system',
+        'no longer accepts mail',
     ),
     'Reverse DNS lookup failed' => array(
         'do not have reverse-DNS',
@@ -111,6 +120,7 @@ $reasons = array(
         'Blocked for abuse',
         'blocked using Barracuda',
         'blocked due to spam content in the message',
+        'blocked by recipient',
         'cbl.abuseat.org',
         'classified as SPAM',
         'classified as spam',
@@ -151,6 +161,7 @@ $reasons = array(
         'rejected for policy reasons',
         'Requested action not taken: message refused',
         'Rule imposed mailbox access',
+        'Sender not allowed',
         'sending MTA\'s poor reputation',
         'www.spamcop.net',
         'spam.cybernet1.com',
@@ -160,6 +171,7 @@ $reasons = array(
         '5.0.0 Spam',
         'Spam content matched',
         'Spam mail rejected',
+        'SPAM EMAIL NOT ACCEPTED',
         'Spam Message',
         'Spam source blocked',
         'Spamming not allowed',
@@ -189,13 +201,15 @@ $reasons = array(
         'Unable to relay',
         'we do not relay'
     ),
-    'Unknown domain' => array(
+    'Domain does not exist' => array(
         'The account or domain may not exist, they may be blacklisted, or missing the proper dns entries',
         'Host or domain name not found',
         'couldn\'t find any host by that name',
         'This domain is not hosted here',
         'No such domain',
-        'Domain name %does not resolve'
+        'Domain name %does not resolve',
+        'retry timeout exceeded',
+        'Connection%timed out',
     ),
     'Mailbox full' => array(
         'maximum mailbox size reached',
@@ -233,10 +247,6 @@ $reasons = array(
         'Address no longer%in use',
     ),
     'Connection refused' => array('Connection refused'),
-    'Connection timeout' => array(
-        'retry timeout exceeded',
-        'Connection%timed out'
-    ),
     '550 code' => array('550'),
 );
 
