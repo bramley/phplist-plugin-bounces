@@ -49,6 +49,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version     Description
+    2.0.3+20160527  Add class map for autoloading
     2.0.2+20160321  Added bounce reasons
     2.0.1+20151231  Further bounce reasons
     2.0.0+20150815  Added dependencies
