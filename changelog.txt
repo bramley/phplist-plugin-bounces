@@ -1,3 +1,6 @@
+version 2.0.4+20170304
+      New page to handle core phplist help dialog
+
 version 2.0.3+20160527
       Add class map
 
