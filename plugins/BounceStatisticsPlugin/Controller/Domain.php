@@ -28,7 +28,7 @@ class BounceStatisticsPlugin_Controller_Domain
     {
         $w->setTitle($this->i18n->get('domain name'));
 
-        foreach ($this->model->listBounceDomains($start, $limit) as $row) {
+        foreach ($this->dao->listBounceDomains($start, $limit) as $row) {
             $key = $row['domain'];
             $w->addElement($key);
             $w->addColumn($key, $this->i18n->get('bounces'), $row['bounces']);
@@ -37,7 +37,7 @@ class BounceStatisticsPlugin_Controller_Domain
 
     function total()
     {
-        return $this->model->totalBounceDomains();
+        return $this->dao->totalBounceDomains();
     }
 
     /*
@@ -45,7 +45,7 @@ class BounceStatisticsPlugin_Controller_Domain
      */
     public function exportRows()
     {
-        return $this->model->listBounceDomains();
+        return $this->dao->listBounceDomains();
     }
 
     public function exportFieldNames()

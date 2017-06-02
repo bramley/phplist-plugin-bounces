@@ -32,7 +32,9 @@ class BounceStatisticsPlugin_ControllerFactory extends CommonPlugin_ControllerFa
      */
     public function createController($pi, array $params)
     {
+        $container = include __DIR__ . '/dic.php';
         $class = $pi . '_Controller_' . ucfirst($params['page']);
-        return new $class();
+
+        return $container->get($class);
     }
 }

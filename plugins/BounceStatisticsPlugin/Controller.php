@@ -17,6 +17,8 @@
 class BounceStatisticsPlugin_Controller
     extends CommonPlugin_Controller
 {
+    protected $attributes;
+    protected $dao;
     protected $model;
 
     /*
@@ -40,7 +42,7 @@ class BounceStatisticsPlugin_Controller
             'listing' => $listing->display()
         );
 
-        if (($this->model->page == 'reason' || $this->model->page == 'users') && count($this->model->attributes) > 0)
+        if (($this->model->page == 'reason' || $this->model->page == 'users') && count($this->attributes) > 0)
             $params['form'] = CommonPlugin_Widget::attributeForm($this, $this->model, false, true);
 
         print $this->render(dirname(__FILE__) . '/view.tpl.php', $params);
@@ -49,10 +51,15 @@ class BounceStatisticsPlugin_Controller
     /*
      *    Public methods
      */
-    public function __construct()
-    {
+    public function __construct(
+        BounceStatisticsPlugin_Model $model,
+        BounceStatisticsPlugin_DAO_Bounce $dao,
+        array $attributes
+    ) {
         parent::__construct();
-        $this->model = new BounceStatisticsPlugin_Model(new CommonPlugin_DB());
+        $this->model = $model;
+        $this->dao = $dao;
+        $this->attributes = $attributes;
         $this->model->setProperties($_REQUEST);
     }
 

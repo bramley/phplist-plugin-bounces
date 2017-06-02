@@ -16,14 +16,6 @@
  */
 class BounceStatisticsPlugin_Model extends CommonPlugin_Model
 {
-    /*
-     *    private variables
-     */
-    private $dao;
-
-    /*
-     *    Inherited protected variables
-     */
     protected $properties = array(
         'page' => 'reason',
         'selectedAttrs' => array()
@@ -31,60 +23,20 @@ class BounceStatisticsPlugin_Model extends CommonPlugin_Model
     protected $persist = array(
         'selectedAttrs' => '',
     );
-    /*
-     *    Public variables
-     */
-    public $attributes = array();
+    public $attributes;
 
-    /*
-     *    Private methods
-     */
-    private function filterAttrs($key)
-    {
-        return isset($this->attributes[$key]);
-    }
-    /*
-     *    Public methods
-     */
-    public function __construct($db)
+    public function __construct(array $attributes)
     {
         parent::__construct('BounceStatistics');
-        $this->dao = new BounceStatisticsPlugin_DAO_Bounce($db);
-        $this->attributeDAO = new CommonPlugin_DAO_Attribute($db);
-        $this->attributes = $this->attributeDAO->attributesById();
+        $this->attributes = $attributes;
         // remove selected attributes that no longer exist and re-index
-        $this->properties['selectedAttrs']
-            = array_values(array_filter($this->properties['selectedAttrs'], array($this, 'filterAttrs')));
+        $this->properties['selectedAttrs'] = array_values(
+            array_filter(
+                $this->properties['selectedAttrs'],
+                function ($attrId) {
+                    return isset($this->attributes[$attrId]);
+                }
+            )
+        );
     }
-
-    public function listBounceDomains($start = null, $limit = null)
-    {
-        return $this->dao->listBounceDomains($start, $limit);
-    }
-
-    public function totalBounceDomains()
-    {
-        return $this->dao->totalBounceDomains();
-    }
-
-    public function listBounceReasons($start = null, $limit = null)
-    {
-        return $this->dao->listBounceReasons($this->attributes, $start, $limit);
-    }
-
-    public function totalBounceReasons()
-    {
-        return $this->dao->totalBounceReasons();
-    }
-
-    public function bouncedUsers($start = null, $limit = null)
-    {
-        return $this->dao->bouncedUsers($this->attributes, $start, $limit);
-    }
-
-    public function totalBouncedUsers()
-    {
-        return $this->dao->totalBouncedUsers();
-    }
-
 }

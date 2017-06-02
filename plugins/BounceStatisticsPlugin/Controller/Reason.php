@@ -27,7 +27,7 @@ class BounceStatisticsPlugin_Controller_Reason
     {
         $w->setTitle($this->i18n->get('bounce'));
 
-        foreach ($this->model->listBounceReasons($start, $limit) as $row) {
+        foreach ($this->dao->listBounceReasons($this->attributes, $start, $limit) as $row) {
             $key = $row['bounce'];
             $w->addElement($key, new CommonPlugin_PageURL('bounce', array('id' => $row['bounce'])));
             $w->addColumnEmail(
@@ -40,7 +40,7 @@ class BounceStatisticsPlugin_Controller_Reason
             $w->addColumn($key, $this->i18n->get('Bounce date'), $row['bouncedate']);
 
             foreach ($this->model->selectedAttrs as $attr) {
-                $w->addColumn($key, $this->model->attributes[$attr]['name'], $row["attr{$attr}"]);
+                $w->addColumn($key, $this->attributes[$attr]['name'], $row["attr{$attr}"]);
             }
             $w->addColumn($key, $this->i18n->get('reason'), $row['reason']);
         }
@@ -48,14 +48,14 @@ class BounceStatisticsPlugin_Controller_Reason
 
     function total()
     {
-        return $this->model->totalBounceReasons();
+        return $this->dao->totalBounceReasons();
     }
     /*
      * Implementation of CommonPlugin_IExportable
      */
     public function exportRows()
     {
-        return $this->model->listBounceReasons();
+        return $this->dao->listBounceReasons($this->attributes);
     }
 
     public function exportFieldNames()
@@ -68,7 +68,7 @@ class BounceStatisticsPlugin_Controller_Reason
         $fields[] = $this->i18n->get('bounce date');
 
         foreach ($this->model->selectedAttrs as $attr)
-            $fields[] = $this->model->attributes[$attr]['name'];
+            $fields[] = $this->attributes[$attr]['name'];
 
         $fields[] = $this->i18n->get('reason');
         return $fields;

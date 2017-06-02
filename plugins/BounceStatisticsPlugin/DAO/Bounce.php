@@ -57,7 +57,7 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
         return array($attr_join, $attr_fields);
     }
 
-    public function listBounceReasons($attributes, $start, $limit)
+    public function listBounceReasons($attributes, $start = null, $limit = null)
     {
         $limitClause = is_null($start) ? '' : "LIMIT $start, $limit";
         $sql = 
@@ -101,10 +101,10 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
             JOIN {$this->tables['bounce']} AS b ON b.id = umb.bounce
             JOIN {$this->tables['message']} AS m ON m.id = umb.message";
 
-        return $this->dbCommand->queryOne($sql, 't');
+        return $this->dbCommand->queryOne($sql);
     }
 
-    public function bouncedUsers($attributes, $start, $limit)
+    public function bouncedUsers($attributes, $start = null, $limit = null)
     {
         $limitClause = is_null($start) ? '' : "LIMIT $start, $limit";
         list($attr_join, $attr_fields) = $this->userAttributeJoin($attributes);
@@ -126,10 +126,10 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
            "SELECT COUNT(*) AS t
             FROM {$this->tables['user']} AS u 
             WHERE bouncecount > 0";
-        return $this->dbCommand->queryOne($sql, 't');
+        return $this->dbCommand->queryOne($sql);
     }
 
-    public function listBounceDomains($start, $limit)
+    public function listBounceDomains($start = null, $limit = null)
     {
         $limitClause = is_null($start) ? '' : "LIMIT $start, $limit";
         $sql = 
@@ -155,10 +155,10 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
                 GROUP BY domain
                 ) AS alias";
 
-        return $this->dbCommand->queryOne($sql, 't');
+        return $this->dbCommand->queryOne($sql);
     }
 
-    public function __construct($dbCommand)
+    public function __construct(CommonPlugin_DB $dbCommand)
     {
         parent::__construct($dbCommand);
 

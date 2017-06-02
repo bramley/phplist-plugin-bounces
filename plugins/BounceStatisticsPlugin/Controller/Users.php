@@ -27,12 +27,12 @@ class BounceStatisticsPlugin_Controller_Users
     {
         $w->setTitle($this->i18n->get('User email'));
 
-        foreach ($this->model->bouncedUsers($start, $limit) as $row) {
+        foreach ($this->dao->bouncedUsers($this->attributes, $start, $limit) as $row) {
             $key = $row['email'];
             $w->addElement($key, new CommonPlugin_PageURL('userhistory', array('id' => $row['id'])));
 
             foreach ($this->model->selectedAttrs as $attr) {
-                $w->addColumn($key, $this->model->attributes[$attr]['name'], $row["attr{$attr}"]);
+                $w->addColumn($key, $this->attributes[$attr]['name'], $row["attr{$attr}"]);
             }
             $w->addColumn($key, $this->i18n->get('bounce count'), $row['bouncecount']);
             $value = $row['confirmed']
@@ -51,14 +51,14 @@ class BounceStatisticsPlugin_Controller_Users
 
     function total()
     {
-        return $this->model->totalBouncedUsers();
+        return $this->dao->totalBouncedUsers();
     }
     /*
      * Implementation of CommonPlugin_IExportable
      */
     public function exportRows()
     {
-        return $this->model->bouncedUsers();
+        return $this->dao->bouncedUsers($this->attributes);
     }
 
     public function exportFieldNames()
@@ -67,7 +67,7 @@ class BounceStatisticsPlugin_Controller_Users
         $fields[] = $this->i18n->get('User email');
 
         foreach ($this->model->selectedAttrs as $attr)
-            $fields[] = $this->model->attributes[$attr]['name'];
+            $fields[] = $this->attributes[$attr]['name'];
 
         $fields[] = $this->i18n->get('bounce count');
         return $fields;
