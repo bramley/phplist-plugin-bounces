@@ -1,21 +1,20 @@
 <?php
 /**
- * BounceStatisticsPlugin for phplist
- * 
+ * BounceStatisticsPlugin for phplist.
+ *
  * This file is a part of BounceStatisticsPlugin.
  *
  * @category  phplist
- * @package   BounceStatisticsPlugin
+ *
  * @author    Duncan Cameron
  * @copyright 2011-2017 Duncan Cameron
  * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License, Version 3
  */
 
 /**
- * This is the controller class that provides the actionX() methods
+ * This is the controller class that provides the actionX() methods.
  */
-class BounceStatisticsPlugin_Controller
-    extends CommonPlugin_Controller
+class BounceStatisticsPlugin_Controller extends CommonPlugin_Controller
 {
     protected $attributes;
     protected $dao;
@@ -28,7 +27,7 @@ class BounceStatisticsPlugin_Controller
     {
         if (isset($_POST['SearchForm'])) {
             $this->model->setProperties($_POST['SearchForm']);
-            $redirect = new CommonPlugin_PageURL;
+            $redirect = new CommonPlugin_PageURL();
             header("Location: $redirect");
             exit;
         }
@@ -39,13 +38,14 @@ class BounceStatisticsPlugin_Controller
         $listing = new CommonPlugin_Listing($this, $this);
         $params = array(
             'toolbar' => $toolbar->display(),
-            'listing' => $listing->display()
+            'listing' => $listing->display(),
         );
 
-        if (($this->model->page == 'reason' || $this->model->page == 'users') && count($this->attributes) > 0)
+        if (($this->model->page == 'reason' || $this->model->page == 'users') && count($this->attributes) > 0) {
             $params['form'] = CommonPlugin_Widget::attributeForm($this, $this->model, false, true);
+        }
 
-        print $this->render(dirname(__FILE__) . '/view.tpl.php', $params);
+        echo $this->render(dirname(__FILE__) . '/view.tpl.php', $params);
     }
 
     /*

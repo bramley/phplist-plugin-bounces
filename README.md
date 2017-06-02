@@ -49,6 +49,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version     Description
+    2.1.0+20170603  Internal code changes
     2.0.4+20170304  Use core phplist help dialog
     2.0.3+20160527  Add class map for autoloading
     2.0.2+20160321  Added bounce reasons

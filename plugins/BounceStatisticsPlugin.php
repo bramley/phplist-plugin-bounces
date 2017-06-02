@@ -1,20 +1,19 @@
 <?php
 /**
- * BounceStatisticsPlugin for phplist
- * 
+ * BounceStatisticsPlugin for phplist.
+ *
  * This file is a part of BounceStatisticsPlugin.
  *
  * @category  phplist
- * @package   BounceStatisticsPlugin
+ *
  * @author    Duncan Cameron
  * @copyright 2011-2017 Duncan Cameron
  * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License, Version 3
  */
 
 /**
- * This class registers the plugin with phplist
+ * This class registers the plugin with phplist.
  */
-
 class BounceStatisticsPlugin extends phplistPlugin
 {
     const VERSION_FILE = 'version.txt';
@@ -30,7 +29,7 @@ class BounceStatisticsPlugin extends phplistPlugin
     public $topMenuLinks = array(
         'reason' => array('category' => 'statistics'),
         'domain' => array('category' => 'statistics'),
-        'users' => array('category' => 'statistics')
+        'users' => array('category' => 'statistics'),
     );
     public $pageTitles;
 
@@ -49,10 +48,9 @@ class BounceStatisticsPlugin extends phplistPlugin
     }
 
     /**
-     * Provide the dependencies for enabling this plugin
+     * Provide the dependencies for enabling this plugin.
      *
-     * @access  public
-     * @return  array
+     * @return array
      */
     public function dependencyCheck()
     {
@@ -78,6 +76,7 @@ class BounceStatisticsPlugin extends phplistPlugin
             'domain' => $i18n->get('Bounce Domains'),
             'users' => $i18n->get('Bounced Users'),
         );
+
         return null;
     }
 }

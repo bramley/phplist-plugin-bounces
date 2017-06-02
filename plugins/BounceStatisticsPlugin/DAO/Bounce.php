@@ -1,18 +1,18 @@
 <?php
 /**
- * BounceStatisticsPlugin for phplist
- * 
+ * BounceStatisticsPlugin for phplist.
+ *
  * This file is a part of BounceStatisticsPlugin.
  *
  * @category  phplist
- * @package   BounceStatisticsPlugin
+ *
  * @author    Duncan Cameron
  * @copyright 2011-2017 Duncan Cameron
  * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License, Version 3
  */
 
 /**
- * This class provides access to the database tables
+ * This class provides access to the database tables.
  */
 class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
 {
@@ -33,13 +33,13 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
             $joinType = ($searchTerm && $searchAttr == $id) ? 'JOIN' : 'LEFT JOIN';
             $thisJoin = "
                 $joinType {$this->tables['user_attribute']} ua{$id} ON ua{$id}.userid = u.id AND ua{$id}.attributeid = {$id} ";
-            
+
             switch ($attr['type']) {
             case 'radio':
             case 'select':
                 $thisJoin .= "
                 $joinType {$tableName} la{$id} ON la{$id}.id = ua{$id}.value ";
-                
+
                 if ($searchTerm && $searchAttr == $id) {
                     $thisJoin .= "AND la{$id}.name LIKE '%$searchTerm%' ";
                 }
@@ -54,13 +54,14 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
             }
             $attr_join .= $thisJoin;
         }
+
         return array($attr_join, $attr_fields);
     }
 
     public function listBounceReasons($attributes, $start = null, $limit = null)
     {
         $limitClause = is_null($start) ? '' : "LIMIT $start, $limit";
-        $sql = 
+        $sql =
             "SELECT umb.bounce
             FROM {$this->tables['user_message_bounce']} AS umb
             JOIN {$this->tables['user']} AS u ON umb.user = u.id
@@ -77,7 +78,7 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
         $bounces = implode(', ', $bounces);
 
         list($attr_join, $attr_fields) = $this->userAttributeJoin($attributes);
-        $sql = 
+        $sql =
            "SELECT u.email, u.id, umb.message, umb.bounce, umb.time AS bouncedate,
             $this->case
             $attr_fields
@@ -92,9 +93,9 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
         return $this->dbCommand->queryAll($sql);
     }
 
-    public function totalBounceReasons() 
+    public function totalBounceReasons()
     {
-        $sql = 
+        $sql =
            "SELECT COUNT(u.email) AS t
             FROM {$this->tables['user_message_bounce']} AS umb
             JOIN {$this->tables['user']} AS u ON umb.user = u.id
@@ -108,7 +109,7 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
     {
         $limitClause = is_null($start) ? '' : "LIMIT $start, $limit";
         list($attr_join, $attr_fields) = $this->userAttributeJoin($attributes);
-        $sql = 
+        $sql =
            "SELECT u.email, u.id, u.bouncecount, u.confirmed, u.blacklisted, ub.email as ub_email $attr_fields
             FROM {$this->tables['user']} AS u
             LEFT JOIN {$this->tables['user_blacklist']} ub ON u.email = ub.email
@@ -120,19 +121,20 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
         return $this->dbCommand->queryAll($sql);
     }
 
-    public function totalBouncedUsers() 
+    public function totalBouncedUsers()
     {
-        $sql = 
+        $sql =
            "SELECT COUNT(*) AS t
             FROM {$this->tables['user']} AS u 
             WHERE bouncecount > 0";
+
         return $this->dbCommand->queryOne($sql);
     }
 
     public function listBounceDomains($start = null, $limit = null)
     {
         $limitClause = is_null($start) ? '' : "LIMIT $start, $limit";
-        $sql = 
+        $sql =
             "SELECT SUBSTRING_INDEX(email, '@', -1) AS domain, COUNT(*) AS bounces
             FROM {$this->tables['user']} AS u
             JOIN {$this->tables['user_message_bounce']} AS umb ON u.id = umb.user
@@ -170,8 +172,8 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
         if (!isset($_SESSION[self::PLUGIN]) || $_SESSION[self::PLUGIN]['modTime'] < $modTime) {
             include $f;
 
-            $case = 
-                "CASE";
+            $case =
+                'CASE';
 
             foreach ($reasons as $reason => $targets) {
                 $reason = sql_escape($reason);

@@ -1,11 +1,11 @@
 <?php
 /**
- * BounceStatisticsPlugin for phplist
- * 
+ * BounceStatisticsPlugin for phplist.
+ *
  * This file is a part of BounceStatisticsPlugin.
  *
  * @category  phplist
- * @package   BounceStatisticsPlugin
+ *
  * @author    Duncan Cameron
  * @copyright 2011-2017 Duncan Cameron
  * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License, Version 3
@@ -13,17 +13,15 @@
 
 /**
  * This class is a subclass of the base controller class that implements the CommonPlugin_IPopulator
- * interface to show bounces by reason 
+ * interface to show bounces by reason.
  */
-class BounceStatisticsPlugin_Controller_Users 
-    extends BounceStatisticsPlugin_Controller
-    implements CommonPlugin_IPopulator, CommonPlugin_IExportable
+class BounceStatisticsPlugin_Controller_Users extends BounceStatisticsPlugin_Controller implements CommonPlugin_IPopulator, CommonPlugin_IExportable
 {
     /*
      * Implementation of CommonPlugin_IPopulator
      */
 
-    function populate(WebblerListing $w, $start, $limit)
+    public function populate(WebblerListing $w, $start, $limit)
     {
         $w->setTitle($this->i18n->get('User email'));
 
@@ -49,10 +47,11 @@ class BounceStatisticsPlugin_Controller_Users
         }
     }
 
-    function total()
+    public function total()
     {
         return $this->dao->totalBouncedUsers();
     }
+
     /*
      * Implementation of CommonPlugin_IExportable
      */
@@ -66,10 +65,12 @@ class BounceStatisticsPlugin_Controller_Users
         $fields = array();
         $fields[] = $this->i18n->get('User email');
 
-        foreach ($this->model->selectedAttrs as $attr)
+        foreach ($this->model->selectedAttrs as $attr) {
             $fields[] = $this->attributes[$attr]['name'];
+        }
 
         $fields[] = $this->i18n->get('bounce count');
+
         return $fields;
     }
 
@@ -78,9 +79,11 @@ class BounceStatisticsPlugin_Controller_Users
         $values = array();
         $values[] = $row['email'];
 
-        foreach ($this->model->selectedAttrs as $attr)
+        foreach ($this->model->selectedAttrs as $attr) {
             $values[] = $row["attr{$attr}"];
+        }
         $values[] = $row['bouncecount'];
+
         return $values;
     }
 }

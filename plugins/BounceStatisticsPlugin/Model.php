@@ -1,24 +1,24 @@
 <?php
 /**
- * BounceStatisticsPlugin for phplist
- * 
+ * BounceStatisticsPlugin for phplist.
+ *
  * This file is a part of BounceStatisticsPlugin.
  *
  * @category  phplist
- * @package   BounceStatisticsPlugin
+ *
  * @author    Duncan Cameron
  * @copyright 2011-2017 Duncan Cameron
  * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License, Version 3
  */
 
 /**
- * This class holds the fields entered in the url, and provides an interface to the DAO
+ * This class holds the fields entered in the url, and provides an interface to the DAO.
  */
 class BounceStatisticsPlugin_Model extends CommonPlugin_Model
 {
     protected $properties = array(
         'page' => 'reason',
-        'selectedAttrs' => array()
+        'selectedAttrs' => array(),
     );
     protected $persist = array(
         'selectedAttrs' => '',

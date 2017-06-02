@@ -1,25 +1,24 @@
 <?php
 /**
- * BounceStatisticsPlugin for phplist
- * 
+ * BounceStatisticsPlugin for phplist.
+ *
  * This file is a part of BounceStatisticsPlugin.
  *
  * @category  phplist
- * @package   BounceStatisticsPlugin
+ *
  * @author    Duncan Cameron
  * @copyright 2011-2017 Duncan Cameron
  * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License, Version 3
  */
 
 /**
- * This file contains mappings of the bounce reasons
+ * This file contains mappings of the bounce reasons.
  */
-
 $reasons = array(
     'Unrouteable address' => array(
         'Unrouteable%address',
         'Unroutable%address',
-        'No route to host'
+        'No route to host',
     ),
     'Unknown user' => array(
         'account has been suspended',
@@ -79,33 +78,33 @@ $reasons = array(
         'no valid Reverse DNS',
         'no reverse DNS entry',
         'Sender IP must resolve',
-        'This server requires PTR for unauthenticated connections'
+        'This server requires PTR for unauthenticated connections',
     ),
     'Blocked by Verizon' => array(
-        'currently blocked by Verizon'
+        'currently blocked by Verizon',
     ),
     'Blocked by Comcast' => array(
-        'Comcast%spam'
+        'Comcast%spam',
     ),
     'Blocked by AOL' => array(
-        'postmaster.info.aol.com/errors'
+        'postmaster.info.aol.com/errors',
     ),
     'Blocked by gmail' => array(
-        'http://support.google.com/mail/bin/answer.py'
+        'http://support.google.com/mail/bin/answer.py',
     ),
     'Blocked by RoadRunner' => array(
-        'postmaster.rr.com/amIBlockedByRR'
+        'postmaster.rr.com/amIBlockedByRR',
     ),
     'Blocked by messagelabs' => array(
-        'visit www.messagelabs.com/support'
+        'visit www.messagelabs.com/support',
     ),
     'Rejected by Yahoo Groups' => array(
-        'help.yahoo.com/l/us/yahoo/groups'
+        'help.yahoo.com/l/us/yahoo/groups',
     ),
     'Rejected by recipient' => array(
         'does not accept mail from',
         'recipient is only accepting mail from specific email addresses',
-        'www.sendio.com/authentication-about'
+        'www.sendio.com/authentication-about',
     ),
     'Blocked by blacklist, spam filter or SPF' => array(
         'Access denied',
@@ -186,7 +185,7 @@ $reasons = array(
     ),
     'Unsolicited' => array(
         'appears to be unsolicited',
-        'detected unsolicited content'
+        'detected unsolicited content',
     ),
     'retry time not reached for any host after a long failure period' => array('retry time not reached for any host after a long failure period'),
     'Address rejected' => array('Address rejected'),
@@ -199,7 +198,7 @@ $reasons = array(
         'Relaying denied',
         'relaying not allowed',
         'Unable to relay',
-        'we do not relay'
+        'we do not relay',
     ),
     'Domain does not exist' => array(
         'The account or domain may not exist, they may be blacklisted, or missing the proper dns entries',
@@ -233,7 +232,7 @@ $reasons = array(
     ),
     'Delivery delayed' => array(
         'Delivery to the following recipients has been delayed',
-        'It will be retried until it is'
+        'It will be retried until it is',
     ),
     'Delivery failed' => array(
         'Delivery to the following recipients failed',
@@ -249,4 +248,3 @@ $reasons = array(
     'Connection refused' => array('Connection refused'),
     '550 code' => array('550'),
 );
-
