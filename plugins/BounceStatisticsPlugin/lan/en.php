@@ -7,7 +7,7 @@
  * @category  phplist
  * @package   BounceStatisticsPlugin
  * @author    Duncan Cameron
- * @copyright 2011-2012 Duncan Cameron
+ * @copyright 2011-2017 Duncan Cameron
  * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License, Version 3
  * @version   SVN: $Id: en.php 1269 2013-04-29 15:04:49Z Duncan $
  * @link      http://forums.phplist.com/viewtopic.php?f=7&t=37570
