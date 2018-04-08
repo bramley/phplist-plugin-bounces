@@ -1,3 +1,6 @@
+version 2.1.2+20180408
+      Revise bounce reasons
+
 version 2.1.1+20171112
       Further bounce reasons
 

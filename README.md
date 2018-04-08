@@ -49,6 +49,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version     Description
+    2.1.2+20180408  Revise bounce reasons
     2.1.1+20171112  Further bounce reasons
     2.1.0+20170603  Internal code changes
     2.0.4+20170304  Use core phplist help dialog
