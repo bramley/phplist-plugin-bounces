@@ -19,6 +19,7 @@ class BounceStatisticsPlugin_Controller extends CommonPlugin_Controller
     protected $attributes;
     protected $dao;
     protected $model;
+    protected $showAttributes = true;
 
     /*
      *    Protected methods
@@ -41,7 +42,7 @@ class BounceStatisticsPlugin_Controller extends CommonPlugin_Controller
             'listing' => $listing->display(),
         );
 
-        if (($this->model->page == 'reason' || $this->model->page == 'users') && count($this->attributes) > 0) {
+        if ($this->showAttributes && count($this->attributes) > 0) {
             $params['form'] = CommonPlugin_Widget::attributeForm($this, $this->model, false, true);
         }
 

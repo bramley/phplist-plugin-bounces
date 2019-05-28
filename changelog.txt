@@ -1,3 +1,6 @@
+version 2.1.4+20190528
+      Rename users page to subscribers to avoid theme problems due to clash with core phplist page
+
 version 2.1.3+20181211
       Link to user page instead of userhistory page, which has been removed
 

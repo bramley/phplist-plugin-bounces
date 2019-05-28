@@ -33,8 +33,8 @@ return new Picotainer([
             $container->get('attributesById')
         );
     },
-    'BounceStatisticsPlugin_Controller_Users' => function (ContainerInterface $container) {
-        return new BounceStatisticsPlugin_Controller_Users(
+    'BounceStatisticsPlugin_Controller_Subscribers' => function (ContainerInterface $container) {
+        return new BounceStatisticsPlugin_Controller_Subscribers(
             $container->get('BounceStatisticsPlugin_Model'),
             $container->get('BounceStatisticsPlugin_DAO_Bounce'),
             $container->get('attributesById')

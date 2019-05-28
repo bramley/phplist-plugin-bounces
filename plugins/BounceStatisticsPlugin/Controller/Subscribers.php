@@ -15,7 +15,7 @@
  * This class is a subclass of the base controller class that implements the CommonPlugin_IPopulator
  * interface to show bounces by reason.
  */
-class BounceStatisticsPlugin_Controller_Users extends BounceStatisticsPlugin_Controller implements CommonPlugin_IPopulator, CommonPlugin_IExportable
+class BounceStatisticsPlugin_Controller_Subscribers extends BounceStatisticsPlugin_Controller implements CommonPlugin_IPopulator, CommonPlugin_IExportable
 {
     /*
      * Implementation of CommonPlugin_IPopulator
@@ -23,7 +23,8 @@ class BounceStatisticsPlugin_Controller_Users extends BounceStatisticsPlugin_Con
 
     public function populate(WebblerListing $w, $start, $limit)
     {
-        $w->setTitle($this->i18n->get('User email'));
+        $w->setTitle($this->i18n->get('Subscribers who have bounced'));
+        $w->setElementHeading($this->i18n->get('Subscriber'));
 
         foreach ($this->dao->bouncedUsers($this->attributes, $start, $limit) as $row) {
             $key = $row['email'];

@@ -17,6 +17,7 @@
  */
 class BounceStatisticsPlugin_Controller_Domain extends BounceStatisticsPlugin_Controller implements CommonPlugin_IPopulator, CommonPlugin_IExportable
 {
+    protected $showAttributes = false;
     /*
      * Implementation of CommonPlugin_IPopulator
      */

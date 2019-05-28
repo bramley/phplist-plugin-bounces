@@ -29,7 +29,7 @@ class BounceStatisticsPlugin extends phplistPlugin
     public $topMenuLinks = array(
         'reason' => array('category' => 'statistics'),
         'domain' => array('category' => 'statistics'),
-        'users' => array('category' => 'statistics'),
+        'subscribers' => array('category' => 'statistics'),
     );
     public $pageTitles;
 
@@ -74,7 +74,7 @@ class BounceStatisticsPlugin extends phplistPlugin
         $this->pageTitles = array(
             'reason' => $i18n->get('Bounce Reasons'),
             'domain' => $i18n->get('Bounce Domains'),
-            'users' => $i18n->get('Bounced Users'),
+            'subscribers' => $i18n->get('Bounced subscribers'),
         );
 
         return null;
