@@ -49,6 +49,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version     Description
+    2.1.5+20200118  Additional bounce reasons
     2.1.4+20190528  Improve display of bounced subscribers page
     2.1.3+20181211  Link to user page instead of user history
     2.1.2+20180408  Revise bounce reasons

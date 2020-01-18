@@ -125,7 +125,7 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
     {
         $sql =
            "SELECT COUNT(*) AS t
-            FROM {$this->tables['user']} AS u 
+            FROM {$this->tables['user']} AS u
             WHERE bouncecount > 0";
 
         return $this->dbCommand->queryOne($sql);
@@ -149,7 +149,7 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
     public function totalBounceDomains()
     {
         $sql =
-            "SELECT COUNT(*) AS t FROM 
+            "SELECT COUNT(*) AS t FROM
                 (SELECT SUBSTRING_INDEX(email, '@', -1) AS domain
                 FROM {$this->tables['user']} AS u
                 JOIN {$this->tables['user_message_bounce']} AS umb ON u.id = umb.user
@@ -172,8 +172,7 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
         if (!isset($_SESSION[self::PLUGIN]) || $_SESSION[self::PLUGIN]['modTime'] < $modTime) {
             include $f;
 
-            $case =
-                'CASE';
+            $case = 'CASE';
 
             foreach ($reasons as $reason => $targets) {
                 $reason = sql_escape($reason);
@@ -184,7 +183,7 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
                 }
             }
             $case .= "
-                ELSE 'General Failure ...'
+                ELSE 'Unidentified failure ...'
                 END AS reason";
             $_SESSION[self::PLUGIN]['case'] = $case;
             $_SESSION[self::PLUGIN]['modTime'] = $modTime;

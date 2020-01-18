@@ -1,3 +1,6 @@
+version 2.1.5+20200118
+      Additional bounce reasons
+
 version 2.1.4+20190528
       Rename users page to subscribers to avoid theme problems due to clash with core phplist page
 

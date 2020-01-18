@@ -31,11 +31,13 @@ $reasons = array(
         'e-mail address was not found',
         'e-mail address you entered couldn\'t be found',
         'email address is unknown',
+        'Email address could not be found',
         'invalid address',
         'Invalid mailbox',
         'invalid recipient',
         'mailbox not available',
         'mailbox not found',
+        'mailbox is not available',
         'mailbox unavailable',
         'Mailbox unknown or not accepting mail.',
         'no mailbox here by that name',
@@ -96,6 +98,9 @@ $reasons = array(
     ),
     'Blocked by messagelabs' => array(
         'visit www.messagelabs.com/support',
+    ),
+    'Blocked by GBUdb.com' => array(
+        'truncate.gbudb.net',
     ),
     'Rejected by Yahoo Groups' => array(
         'help.yahoo.com/l/us/yahoo/groups',
@@ -254,5 +259,8 @@ $reasons = array(
         'Address no longer%in use',
     ),
     'Connection refused' => array('Connection refused'),
+    'Mailbox is disabled' => [
+        'mailbox is disabled',
+        ],
     '550 code' => array('550'),
 );
