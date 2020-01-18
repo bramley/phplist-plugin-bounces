@@ -16,8 +16,8 @@
  */
 $reasons = array(
     'Unrouteable address' => array(
-        'Unrouteable%address',
-        'Unroutable%address',
+        'Unrouteable',
+        'Unroutable',
         'No route to host',
     ),
     'Unknown user' => array(
@@ -54,7 +54,7 @@ $reasons = array(
         'The email account that you tried to reach is disabled',
         'Reject No user',
         'This account has been disabled or discontinued',
-        'This user doesn\'t have a %account',
+        'This user doesn\'t have a .+?account',
         'Unable to deliver',
         'Unable to process recipient',
         'unknown or illegal alias',
@@ -85,7 +85,7 @@ $reasons = array(
         'currently blocked by Verizon',
     ),
     'Blocked by Comcast' => array(
-        'Comcast%spam',
+        'Comcast.+?spam',
     ),
     'Blocked by AOL' => array(
         'postmaster.info.aol.com/errors',
@@ -217,15 +217,15 @@ $reasons = array(
         'couldn\'t find any host by that name',
         'This domain is not hosted here',
         'No such domain',
-        'Domain name %does not resolve',
-        'Connection%timed out',
+        'Domain name .+?does not resolve',
+        'Connection.+?timed out',
     ),
     'Mailbox full' => array(
         'maximum mailbox size reached',
         'Mailbox has exceeded the limit',
         'Not enough disk space',
         'Not enough disk quota',
-        'does not have%enough disk space',
+        'enough disk space',
         'exceeded storage allocation',
         'exceeds allowed size',
         'full mailbox',
@@ -256,7 +256,7 @@ $reasons = array(
     ),
     'Address no longer used' => array(
         'old addresses are no longer used',
-        'Address no longer%in use',
+        'Address no longer.+?in use',
     ),
     'Connection refused' => array('Connection refused'),
     'Mailbox is disabled' => [

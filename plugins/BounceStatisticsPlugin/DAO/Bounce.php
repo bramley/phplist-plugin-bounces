@@ -176,11 +176,8 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
 
             foreach ($reasons as $reason => $targets) {
                 $reason = sql_escape($reason);
-
-                foreach ($targets as $target) {
-                    $target = sql_escape($target);
-                    $case .= "\n            WHEN CAST(data AS CHAR) LIKE '%$target%' THEN '$reason'";
-                }
+                $regexp = implode('|', array_map('sql_escape', $targets));
+                $case .= "\n            WHEN CAST(data AS CHAR) REGEXP '$regexp' THEN '$reason'";
             }
             $case .= "
                 ELSE 'Unidentified failure ...'
