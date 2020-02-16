@@ -100,7 +100,7 @@ $reasons = array(
         'visit www.messagelabs.com/support',
     ),
     'Blocked by GBUdb.com' => array(
-        'truncate.gbudb.net',
+        'www.gbudb.com/truncate',
     ),
     'Rejected by Yahoo Groups' => array(
         'help.yahoo.com/l/us/yahoo/groups',
