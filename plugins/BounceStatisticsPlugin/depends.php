@@ -11,14 +11,13 @@
  * @copyright 2011-2017 Duncan Cameron
  * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License, Version 3
  */
-
-/**
- * This file creates a dependency injection container.
- */
-use Mouf\Picotainer\Picotainer;
 use Psr\Container\ContainerInterface;
 
-return new Picotainer([
+/*
+ * This file provides the dependencies for use by the dependency injection container.
+ */
+
+return [
     'BounceStatisticsPlugin_Controller_Domain' => function (ContainerInterface $container) {
         return new BounceStatisticsPlugin_Controller_Domain(
             $container->get('BounceStatisticsPlugin_Model'),
@@ -47,17 +46,12 @@ return new Picotainer([
     },
     'BounceStatisticsPlugin_DAO_Bounce' => function (ContainerInterface $container) {
         return new BounceStatisticsPlugin_DAO_Bounce(
-            $container->get('CommonPlugin_DB')
+            new CommonPlugin_DB()
         );
     },
     'attributesById' => function (ContainerInterface $container) {
-        $dao = new CommonPlugin_DAO_Attribute(
-            $container->get('CommonPlugin_DB')
-        );
+        $dao = $container->get('phpList\plugin\Common\DAO\Attribute');
 
-        return $dao->attributesById();
+        return $dao->attributesById(20, 15);
     },
-    'CommonPlugin_DB' => function (ContainerInterface $container) {
-        return new CommonPlugin_DB();
-    },
-]);
+];

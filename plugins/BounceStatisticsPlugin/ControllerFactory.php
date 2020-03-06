@@ -17,6 +17,8 @@
  *
  * @category  phplist
  */
+use phpList\plugin\Common\Container;
+
 class BounceStatisticsPlugin_ControllerFactory extends CommonPlugin_ControllerFactoryBase
 {
     /**
@@ -29,7 +31,8 @@ class BounceStatisticsPlugin_ControllerFactory extends CommonPlugin_ControllerFa
      */
     public function createController($pi, array $params)
     {
-        $container = include __DIR__ . '/dic.php';
+        $depends = include __DIR__ . '/depends.php';
+        $container = new Container($depends);
         $class = $pi . '_Controller_' . ucfirst($params['page']);
 
         return $container->get($class);

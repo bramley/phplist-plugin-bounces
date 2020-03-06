@@ -49,6 +49,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version     Description
+    2.2.0+20200306  Rework handling of attribute DAO
     2.1.6+20200216  Revise bounce reasons
     2.1.5+20200118  Additional bounce reasons
     2.1.4+20190528  Improve display of bounced subscribers page
