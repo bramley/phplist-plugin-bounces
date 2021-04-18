@@ -109,6 +109,7 @@ $reasons = array(
         'does not accept mail from',
         'recipient is only accepting mail from specific email addresses',
         'www.sendio.com/authentication-about',
+        'sender rejected',
     ),
     'Blocked by blacklist, spam filter or SPF' => array(
         'Access denied',

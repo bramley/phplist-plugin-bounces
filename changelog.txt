@@ -1,3 +1,6 @@
+version 2.2.1+20210418
+      Revise bounce reasons
+
 version 2.2.0+20200306
       Rework handling of attribute DAO
 
