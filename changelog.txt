@@ -1,3 +1,9 @@
+version 2.3.0+20211016
+      Bring dependencies and documentation up to date.
+      Add $_GET parameter to the bounce reason page to show only bounces for that domain.
+      On the bounce domain page link the domain to the bounce reason page using that domain.
+      Fixes #4
+
 version 2.2.1+20210418
       Revise bounce reasons
 

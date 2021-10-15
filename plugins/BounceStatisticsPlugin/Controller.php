@@ -14,6 +14,8 @@
 /**
  * This is the controller class that provides the actionX() methods.
  */
+use phpList\plugin\Common\PageURL;
+
 class BounceStatisticsPlugin_Controller extends CommonPlugin_Controller
 {
     protected $attributes;
@@ -28,7 +30,7 @@ class BounceStatisticsPlugin_Controller extends CommonPlugin_Controller
     {
         if (isset($_POST['SearchForm'])) {
             $this->model->setProperties($_POST['SearchForm']);
-            $redirect = new CommonPlugin_PageURL();
+            $redirect = PageURL::CreateFromGet();
             header("Location: $redirect");
             exit;
         }

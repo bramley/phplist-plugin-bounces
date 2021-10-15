@@ -58,8 +58,14 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
         return array($attr_join, $attr_fields);
     }
 
-    public function listBounceReasons($attributes, $start = null, $limit = null)
+    public function listBounceReasons($attributes, $domain, $start = null, $limit = null)
     {
+        if (is_null($domain)) {
+            $where = '';
+        } else {
+            $d = sql_escape($domain);
+            $where = "WHERE SUBSTRING_INDEX(email, '@', -1) = '$d'";
+        }
         $limitClause = is_null($start) ? '' : "LIMIT $start, $limit";
         $sql =
             "SELECT umb.bounce
@@ -67,6 +73,7 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
             JOIN {$this->tables['user']} AS u ON umb.user = u.id
             JOIN {$this->tables['bounce']} AS b ON b.id = umb.bounce
             JOIN {$this->tables['message']} AS m ON m.id = umb.message
+            $where
             ORDER BY umb.bounce
             $limitClause";
 
@@ -93,14 +100,21 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
         return $this->dbCommand->queryAll($sql);
     }
 
-    public function totalBounceReasons()
+    public function totalBounceReasons($domain)
     {
+        if (is_null($domain)) {
+            $where = '';
+        } else {
+            $d = sql_escape($domain);
+            $where = "WHERE SUBSTRING_INDEX(email, '@', -1) = '$d'";
+        }
         $sql =
            "SELECT COUNT(u.email) AS t
             FROM {$this->tables['user_message_bounce']} AS umb
             JOIN {$this->tables['user']} AS u ON umb.user = u.id
             JOIN {$this->tables['bounce']} AS b ON b.id = umb.bounce
-            JOIN {$this->tables['message']} AS m ON m.id = umb.message";
+            JOIN {$this->tables['message']} AS m ON m.id = umb.message
+            $where";
 
         return $this->dbCommand->queryOne($sql);
     }

@@ -17,6 +17,14 @@
  */
 class BounceStatisticsPlugin_Controller_Reason extends BounceStatisticsPlugin_Controller implements CommonPlugin_IPopulator, CommonPlugin_IExportable
 {
+    private $domain;
+
+    public function __construct(...$params)
+    {
+        parent::__construct(...$params);
+        $this->domain = $_GET['domain'] ?? null;
+    }
+
     /*
      * Implementation of CommonPlugin_IPopulator
      */
@@ -25,7 +33,7 @@ class BounceStatisticsPlugin_Controller_Reason extends BounceStatisticsPlugin_Co
     {
         $w->setTitle($this->i18n->get('bounce'));
 
-        foreach ($this->dao->listBounceReasons($this->attributes, $start, $limit) as $row) {
+        foreach ($this->dao->listBounceReasons($this->attributes, $this->domain, $start, $limit) as $row) {
             $key = $row['bounce'];
             $w->addElement($key, new CommonPlugin_PageURL('bounce', array('id' => $row['bounce'])));
             $w->addColumnEmail(
@@ -46,7 +54,7 @@ class BounceStatisticsPlugin_Controller_Reason extends BounceStatisticsPlugin_Co
 
     public function total()
     {
-        return $this->dao->totalBounceReasons();
+        return $this->dao->totalBounceReasons($this->domain);
     }
 
     /*
@@ -54,7 +62,7 @@ class BounceStatisticsPlugin_Controller_Reason extends BounceStatisticsPlugin_Co
      */
     public function exportRows()
     {
-        return $this->dao->listBounceReasons($this->attributes);
+        return $this->dao->listBounceReasons($this->attributes, $this->domain);
     }
 
     public function exportFieldNames()

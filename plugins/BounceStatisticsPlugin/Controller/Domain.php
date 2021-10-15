@@ -15,6 +15,8 @@
  * This class is a subclass of the base controller class, which implements the CommonPlugin_IPopulator
  * interface to show bounces by domain.
  */
+use phpList\plugin\Common\PageURL;
+
 class BounceStatisticsPlugin_Controller_Domain extends BounceStatisticsPlugin_Controller implements CommonPlugin_IPopulator, CommonPlugin_IExportable
 {
     protected $showAttributes = false;
@@ -28,7 +30,8 @@ class BounceStatisticsPlugin_Controller_Domain extends BounceStatisticsPlugin_Co
 
         foreach ($this->dao->listBounceDomains($start, $limit) as $row) {
             $key = $row['domain'];
-            $w->addElement($key);
+            $url = new PageURL('reason', ['pi' => $_GET['pi'], 'domain' => $key]);
+            $w->addElement($key, $url);
             $w->addColumn($key, $this->i18n->get('bounces'), $row['bounces']);
         }
     }
