@@ -7,7 +7,7 @@
  * @category  phplist
  *
  * @author    Duncan Cameron
- * @copyright 2011-2017 Duncan Cameron
+ * @copyright 2011-2021 Duncan Cameron
  * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License, Version 3
  */
 
@@ -61,15 +61,12 @@ class BounceStatisticsPlugin extends phplistPlugin
                 phpListPlugin::isEnabled('CommonPlugin')
                 && version_compare($plugins['CommonPlugin']->version, '3.11.0') >= 0
                 ),
-            'PHP version 5.4.0 or greater' => version_compare(PHP_VERSION, '5.4') > 0,
+            'PHP version 7 or greater' => version_compare(PHP_VERSION, '7') > 0,
         );
     }
 
-    public function sendFormats()
+    public function activate()
     {
-        global $plugins;
-
-        require_once $plugins['CommonPlugin']->coderoot . 'Autoloader.php';
         $i18n = new CommonPlugin_I18N($this);
         $this->pageTitles = array(
             'reason' => $i18n->get('Bounce Reasons'),
@@ -77,6 +74,6 @@ class BounceStatisticsPlugin extends phplistPlugin
             'subscribers' => $i18n->get('Bounced subscribers'),
         );
 
-        return null;
+        parent::activate();
     }
 }

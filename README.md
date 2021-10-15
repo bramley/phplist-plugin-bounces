@@ -12,24 +12,15 @@ The plugin provides three pages, which are added to the Statistics menu:
 
 ### Dependencies ###
 
-Requires php version 5.4 or later.
+Requires php version 7 or later.
 
-Requires the Common Plugin version 3.6.3 or later to be installed. You should install or upgrade to the latest version.
+Requires the Common Plugin version 3.11.0 or later to be installed.
+phplist now includes Common Plugin so you should need only to enable it on the Manage Plugins page.
 
 See <https://github.com/bramley/phplist-plugin-common>
 
-### Set the plugin directory ###
-You can use a directory outside of the web root by changing the definition of `PLUGIN_ROOTDIR` in config.php.
-The benefit of this is that plugins will not be affected when you upgrade phplist.
-
 ### Install through phplist ###
 Install on the Plugins page (menu Config > Plugins) using the package URL `https://github.com/bramley/phplist-plugin-bounces/archive/master.zip`.
-
-In phplist releases 3.0.5 and earlier there is a bug that can cause a plugin to be incompletely installed on some configurations (<https://mantis.phplist.com/view.php?id=16865>).
-Check that these files are in the plugin directory. If not then you will need to install manually. The bug has been fixed in release 3.0.6.
-
-* the file BounceStatisticsPlugin.php
-* the directory BounceStatisticsPlugin
 
 ### Install manually ###
 Download the plugin zip file from <https://github.com/bramley/phplist-plugin-bounces/archive/master.zip>
