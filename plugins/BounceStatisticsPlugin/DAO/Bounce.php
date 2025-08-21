@@ -14,6 +14,9 @@
 /**
  * This class provides access to the database tables.
  */
+
+use phpList\plugin\Common\ChunkedResultIterator;
+
 class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
 {
     const PLUGIN = 'BounceStatisticsPlugin';
@@ -77,27 +80,36 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
             ORDER BY umb.bounce
             $limitClause";
 
-        $bounces = $this->dbCommand->queryColumn($sql, 'bounce');
+        $allBounces = $this->dbCommand->queryColumn($sql, 'bounce');
 
-        if (count($bounces) == 0) {
+        if (count($allBounces) == 0) {
             return array();
         }
-        $bounces = implode(', ', $bounces);
-
         list($attr_join, $attr_fields) = $this->userAttributeJoin($attributes);
-        $sql =
-           "SELECT u.email, u.id, umb.message, umb.bounce, umb.time AS bouncedate,
-            $this->case
-            $attr_fields
-            FROM {$this->tables['user_message_bounce']} AS umb
-            JOIN {$this->tables['user']} AS u ON umb.user = u.id
-            JOIN {$this->tables['bounce']} AS b ON b.id = umb.bounce
-            JOIN {$this->tables['message']} AS m ON m.id = umb.message
-            $attr_join
-            WHERE umb.bounce IN ($bounces)
-            ORDER BY umb.bounce";
 
-        return $this->dbCommand->queryAll($sql);
+        return new ChunkedResultIterator(500, function ($start, $chunk) use ($allBounces, $attr_join, $attr_fields) {
+            if ($start > count($allBounces)) {
+                return [];
+            }
+            $bounces = implode(', ', array_slice($allBounces, $start, $chunk));
+            $sql = <<<END
+            SELECT subquery.*,
+                $this->case
+            FROM (
+                SELECT u.email, u.id, umb.message, umb.bounce, umb.time AS bouncedate,
+                LEFT(CAST(data AS CHAR), 1000) AS data
+                $attr_fields
+                FROM {$this->tables['user_message_bounce']} AS umb
+                JOIN {$this->tables['user']} AS u ON umb.user = u.id
+                JOIN {$this->tables['bounce']} AS b ON b.id = umb.bounce
+                $attr_join
+                WHERE umb.bounce IN ($bounces)
+                ORDER BY umb.bounce
+            ) AS subquery
+END;
+
+            return $this->dbCommand->queryAll($sql);
+        });
     }
 
     public function totalBounceReasons($domain)
@@ -193,7 +205,7 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
 
                 foreach ($targets as $target) {
                     $target = sql_escape($target);
-                    $case .= "\n            WHEN CAST(data AS CHAR) LIKE '%$target%' THEN '$reason'";
+                    $case .= "\n            WHEN data LIKE '%$target%' THEN '$reason'";
                 }
             }
             $case .= "

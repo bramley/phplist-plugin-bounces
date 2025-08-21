@@ -15,6 +15,9 @@
  * This class is a subclass of the base controller class that implements the CommonPlugin_IPopulator
  * interface to show bounces by reason.
  */
+
+use phpList\plugin\Common\CountableIterator;
+
 class BounceStatisticsPlugin_Controller_Reason extends BounceStatisticsPlugin_Controller implements CommonPlugin_IPopulator, CommonPlugin_IExportable
 {
     private $domain;
@@ -24,10 +27,6 @@ class BounceStatisticsPlugin_Controller_Reason extends BounceStatisticsPlugin_Co
         parent::__construct(...$params);
         $this->domain = $_GET['domain'] ?? null;
     }
-
-    /*
-     * Implementation of CommonPlugin_IPopulator
-     */
 
     public function populate(WebblerListing $w, $start, $limit)
     {
@@ -57,12 +56,14 @@ class BounceStatisticsPlugin_Controller_Reason extends BounceStatisticsPlugin_Co
         return $this->dao->totalBounceReasons($this->domain);
     }
 
-    /*
-     * Implementation of CommonPlugin_IExportable
+    /**
+     * @return CountableIterator
      */
     public function exportRows()
     {
-        return $this->dao->listBounceReasons($this->attributes, $this->domain);
+        $rows = $this->dao->listBounceReasons($this->attributes, $this->domain);
+
+        return new CountableIterator($rows, $this->total());
     }
 
     public function exportFieldNames()
