@@ -57,10 +57,10 @@ class BounceStatisticsPlugin extends phplistPlugin
         global $plugins;
 
         return array(
-            'Common Plugin v3.11.0 or later installed' => (
+            'Common Plugin v3.35.0 or later installed' => (
                 phpListPlugin::isEnabled('CommonPlugin')
-                && version_compare($plugins['CommonPlugin']->version, '3.11.0') >= 0
-                ),
+                && version_compare($plugins['CommonPlugin']->version, '3.35.0') >= 0
+            ),
             'PHP version 7 or greater' => version_compare(PHP_VERSION, '7') > 0,
         );
     }

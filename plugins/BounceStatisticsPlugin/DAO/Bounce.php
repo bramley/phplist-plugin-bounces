@@ -38,22 +38,22 @@ class BounceStatisticsPlugin_DAO_Bounce extends CommonPlugin_DAO
                 $joinType {$this->tables['user_attribute']} ua{$id} ON ua{$id}.userid = u.id AND ua{$id}.attributeid = {$id} ";
 
             switch ($attr['type']) {
-            case 'radio':
-            case 'select':
-                $thisJoin .= "
-                $joinType {$tableName} la{$id} ON la{$id}.id = ua{$id}.value ";
+                case 'radio':
+                case 'select':
+                    $thisJoin .= "
+                    $joinType {$tableName} la{$id} ON la{$id}.id = ua{$id}.value ";
 
-                if ($searchTerm && $searchAttr == $id) {
-                    $thisJoin .= "AND la{$id}.name LIKE '%$searchTerm%' ";
-                }
-                $attr_fields .= ", la{$id}.name as attr{$id}";
-                break;
-            default:
-                if ($searchTerm && $searchAttr == $id) {
-                    $thisJoin .= "AND ua{$id}.value LIKE '%$searchTerm%' ";
-                }
-                $attr_fields .= ", ua{$id}.value as attr{$id}";
-                break;
+                    if ($searchTerm && $searchAttr == $id) {
+                        $thisJoin .= "AND la{$id}.name LIKE '%$searchTerm%' ";
+                    }
+                    $attr_fields .= ", la{$id}.name as attr{$id}";
+                    break;
+                default:
+                    if ($searchTerm && $searchAttr == $id) {
+                        $thisJoin .= "AND ua{$id}.value LIKE '%$searchTerm%' ";
+                    }
+                    $attr_fields .= ", ua{$id}.value as attr{$id}";
+                    break;
             }
             $attr_join .= $thisJoin;
         }

@@ -1,3 +1,7 @@
+version 2.4.0+20250825
+      Improve performance of handling large number of bounces
+      CS Fixer changes
+
 version 2.3.0+20211016
       Bring dependencies and documentation up to date.
       Add $_GET parameter to the bounce reason page to show only bounces for that domain.

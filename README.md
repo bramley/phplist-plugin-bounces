@@ -40,6 +40,7 @@ This plugin is free but if you install and find it useful then a donation to sup
 ## Version history ##
 
     version     Description
+    2.4.0+20250825  Improve performance of handling large number of bounces
     2.3.0+20211016  Show bounce reasons for specific domain
     2.2.1+20210418  Revise bounce reasons
     2.2.0+20200306  Rework handling of attribute DAO

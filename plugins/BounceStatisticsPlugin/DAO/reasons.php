@@ -262,6 +262,6 @@ $reasons = array(
     'Connection refused' => array('Connection refused'),
     'Mailbox is disabled' => [
         'mailbox is disabled',
-        ],
+    ],
     '550 code' => array('550'),
 );
